@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:hd="http://www.govtalk.gov.uk/CM/envelope" targetNamespace="http://www.govtalk.gov.uk/CM/envelope"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	xmlns:Q1="http://www.govtalk.gov.uk/taxation/PAYE/RTI/FullPaymentSubmission/15-16/1">
+	<xs:import
+		schemaLocation="../rti-rim-artefacts-2016-v1_2/FullPaymentSubmission-2016-v1-2.xsd"
+		namespace="http://www.govtalk.gov.uk/taxation/PAYE/RTI/FullPaymentSubmission/15-16/1"></xs:import>
+	<!-- XML Schema Generated from XML Document on Thu Feb 05 2015 06:46:33 
+		GMT+0800 (PHT) -->
+	<!-- with XmlGrid.net Free Online Service http://xmlgrid.net -->
+	<xs:element name="GovTalkMessage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="EnvelopeVersion" type="xs:string"></xs:element>
+				<xs:element name="Header">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="MessageDetails">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Class" type="xs:string"></xs:element>
+										<xs:element name="Qualifier" type="xs:string"></xs:element>
+										<xs:element name="Function" type="xs:string"></xs:element>
+										<xs:element name="TransactionID" type="xs:string"></xs:element>
+										<xs:element name="CorrelationID" type="xs:string"></xs:element>
+										<xs:element name="Transformation" type="xs:string"></xs:element>
+										<xs:element name="GatewayTest" type="xs:int"></xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="SenderDetails">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="IDAuthentication">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="SenderID" type="xs:string"></xs:element>
+													<xs:element name="Authentication">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="Method" type="xs:string"></xs:element>
+																<xs:element name="Role" type="xs:string"></xs:element>
+																<xs:element name="Value" type="xs:string"></xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="EmailAddress" type="xs:string"></xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="GovTalkDetails">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element minOccurs="0" maxOccurs="1" name="Keys">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element minOccurs="0" maxOccurs="unbounded"
+											name="Key">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:token">
+														<xs:attribute use="required" name="Type"
+															type="hd:UnicodeNameString" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<!-- xs:element name="Keys"> <xs:complexType> <xs:sequence> <xs:element 
+								name="Key" maxOccurs="unbounded"> <xs:complexType> <xs:attribute name="Type" 
+								type="xs:string"></xs:attribute> </xs:complexType> </xs:element> </xs:sequence> 
+								</xs:complexType> </xs:element -->
+							<xs:element name="TargetDetails">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Organisation" type="xs:string"></xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="ChannelRouting">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Channel">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="URI" type="xs:anyURI"></xs:element>
+													<xs:element name="Name" type="xs:string"></xs:element>
+													<xs:element name="Product" type="xs:string"></xs:element>
+													<xs:element name="Version" type="xs:string"></xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Timestamp" type="xs:dateTime"></xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Body">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="IRenvelope">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="IRheader">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Keys">
+														<xs:complexType>
+															<xs:attribute name="Type" type="xs:string"></xs:attribute>
+														</xs:complexType>
+
+													</xs:element>
+													<xs:element name="PeriodEnd" type="xs:date"></xs:element>
+													<xs:element name="DefaultCurrency" type="xs:string"></xs:element>
+													<xs:element name="IRmark">
+														<xs:complexType>
+															<xs:attribute name="Type" type="xs:string"></xs:attribute>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="Sender" type="xs:string"></xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="FullPaymentSubmission">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="EmpRefs">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="OfficeNo" type="xs:int"></xs:element>
+																<xs:element name="PayeRef" type="xs:string"></xs:element>
+																<xs:element name="AORef" type="xs:string"></xs:element>
+																<xs:element name="ECON" type="xs:string"></xs:element>
+																<xs:element name="COTAXRef" type="xs:int"></xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+													<xs:element name="RelatedTaxYear" type="xs:string"></xs:element>
+													<xs:element name="Employee" maxOccurs="unbounded">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="EmployeeDetails">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="NINO" type="xs:string"></xs:element>
+																			<xs:element name="Name">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="Ttl" type="xs:string"></xs:element>
+																						<xs:element name="Fore" type="xs:string"></xs:element>
+																						<xs:element name="Sur" type="xs:string"></xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element name="Address">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="Line" maxOccurs="unbounded"
+																							type="xs:string"></xs:element>
+																						<xs:element name="UKPostcode" type="xs:string"></xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element name="BirthDate" type="xs:date"></xs:element>
+																			<xs:element name="Gender" type="xs:string"></xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+																<xs:element name="Employment">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element name="Starter">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="StartDate" type="xs:date"></xs:element>
+																						<xs:element name="StartDec" type="xs:string"></xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element name="PayId" type="xs:string"></xs:element>
+																			<xs:element name="FiguresToDate">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="TaxablePay" type="xs:int"></xs:element>
+																						<xs:element name="TotalTax" type="xs:double"></xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element name="Payment">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="BacsHashCode" type="xs:string"></xs:element>
+																						<xs:element name="PayFreq" type="xs:string"></xs:element>
+																						<xs:element name="PmtDate" type="xs:date"></xs:element>
+																						<xs:element name="MonthNo" type="xs:int"></xs:element>
+																						<xs:element name="PeriodsCovered" type="xs:int"></xs:element>
+																						<xs:element name="HoursWorked" type="xs:string"></xs:element>
+																						<xs:element name="TaxCode" type="xs:string"></xs:element>
+																						<xs:element name="TaxablePay" type="xs:int"></xs:element>
+																						<xs:element name="PayAfterStatDedns"
+																							type="xs:double"></xs:element>
+																						<xs:element name="TaxDeductedOrRefunded"
+																							type="xs:double"></xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																			<xs:element name="NIlettersAndValues">
+																				<xs:complexType>
+																					<xs:sequence>
+																						<xs:element name="NIletter" type="xs:string"></xs:element>
+																						<xs:element name="GrossEarningsForNICsInPd"
+																							type="xs:int"></xs:element>
+																						<xs:element name="GrossEarningsForNICsYTD"
+																							type="xs:int"></xs:element>
+																						<xs:element name="AtLELYTD" type="xs:int"></xs:element>
+																						<xs:element name="LELtoPTYTD" type="xs:int"></xs:element>
+																						<xs:element name="PTtoUAPYTD" type="xs:int"></xs:element>
+																						<xs:element name="UAPtoUELYTD" type="xs:int"></xs:element>
+																						<xs:element name="TotalEmpNICInPd"
+																							type="xs:int"></xs:element>
+																						<xs:element name="TotalEmpNICYTD" type="xs:int"></xs:element>
+																						<xs:element name="EmpeeContribnsInPd"
+																							type="xs:double"></xs:element>
+																						<xs:element name="EmpeeContribnsYTD"
+																							type="xs:double"></xs:element>
+																					</xs:sequence>
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="UnicodeNameString">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[\p{L}\p{Nd}_\-\(\)\{\}]*" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>
