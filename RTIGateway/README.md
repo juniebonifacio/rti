@@ -1,4 +1,7 @@
-Commands: xjc -p com.customer.rti.rim2016.v1_2.envelope.generated rti-rim-artefacts-2016-v1_2/envelope-v2-0-HMRC.xsd xjc -p com.customer.rti.rim2016.v1_2.fps.generated rti-rim-artefacts-2016-v1_2/FullPaymentSubmission-2016-v1-2.xsd cp -vpr com src/main/java/
+Commands: 
+xjc -p com.customer.rti.rim2016.v1_2.envelope.generated rti-rim-artefacts-2016-v1_2/envelope-v2-0-HMRC.xsd 
+xjc -p com.customer.rti.rim2016.v1_2.fps.generated rti-rim-artefacts-2016-v1_2/FullPaymentSubmission-2016-v1-2.xsd 
+cp -vpr com src/main/java/
 
 Error when running: mvn clean:eclipse:clean eclipse:eclipse [WARNING] An error occurred during dependency resolution of the following artifact: javax.jms:jms:1.1 Caused by: Could not transfer artifact javax.jms:jms:jar:1.1 from/to java.net (https://maven-repository.dev.java.net/nonav/repository): No connector available to access repository java.net (https://maven-repository.dev.java.net/nonav/repository) of type legacy using the available factories WagonRepositoryConnectorFactory javax.jms:jms:jar:1.1
 
