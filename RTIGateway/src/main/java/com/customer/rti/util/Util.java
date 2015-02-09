@@ -6,10 +6,6 @@ import java.util.Scanner;
 
 import org.springframework.stereotype.Component;
 
-/**
- * @author junie.bonifacio
- *
- */
 @Component
 public class Util {
 

@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author junie.bonifacio
+ * @author developer
  *
  */
 package com.customer.rti.util;

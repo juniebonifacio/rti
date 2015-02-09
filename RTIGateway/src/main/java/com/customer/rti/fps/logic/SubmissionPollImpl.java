@@ -10,7 +10,7 @@ import javax.xml.bind.JAXBException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.customer.rti.fps.util.FPSJAXBUtilImpl;
+import com.customer.jaxb.util.FPSJAXBUtilImpl;
 import com.customer.rti.rim2016.v1_2.envelope.generated.GovTalkMessage;
 import com.customer.rti.rim2016.v1_2.envelope.generated.GovTalkMessage.Body;
 import com.customer.rti.rim2016.v1_2.envelope.generated.GovTalkMessage.GovTalkDetails;
@@ -20,7 +20,7 @@ import com.customer.rti.rim2016.v1_2.envelope.generated.GovTalkMessage.Header.Me
 import com.customer.rti.util.HttpClientUtil;
 
 /**
- * @author junie.bonifacio
+ * @author developer
  *
  */
 

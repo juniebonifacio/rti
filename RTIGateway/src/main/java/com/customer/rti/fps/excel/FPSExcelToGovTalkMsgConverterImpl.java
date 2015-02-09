@@ -4,12 +4,11 @@
 package com.customer.rti.fps.excel;
 
 import java.util.Date;
-import java.util.GregorianCalendar;
 
-import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.customer.rti.rim2016.v1_2.envelope.generated.GovTalkMessage;
@@ -24,6 +23,7 @@ import com.customer.rti.rim2016.v1_2.envelope.generated.GovTalkMessage.Header.Me
 import com.customer.rti.rim2016.v1_2.envelope.generated.GovTalkMessage.Header.SenderDetails;
 import com.customer.rti.rim2016.v1_2.envelope.generated.GovTalkMessage.Header.SenderDetails.IDAuthentication;
 import com.customer.rti.rim2016.v1_2.envelope.generated.GovTalkMessage.Header.SenderDetails.IDAuthentication.Authentication;
+import com.customer.rti.rim2016.v1_2.fps.generated.FullPaymentSubmission;
 import com.customer.rti.rim2016.v1_2.fps.generated.FullPaymentSubmissionISOcurrencyType;
 import com.customer.rti.rim2016.v1_2.fps.generated.IRenvelope;
 import com.customer.rti.rim2016.v1_2.fps.generated.IRheader;
@@ -40,11 +40,15 @@ public class FPSExcelToGovTalkMsgConverterImpl implements
 
 	private static final Logger logger = Logger.getLogger(FPSExcelToGovTalkMsgConverterImpl.class);
 	
+	@Autowired
+	com.customer.jaxb.util.XMLGregorianCalendarUtil xmlGregorianCalendarUtil;
+	
 	public GovTalkMessage convertExcelToFPSMessage(String strEnvelopeVersion, String strClass, String strTransactionID,
 			String strSenderID, String strAuthMethod, String strAuthRole, String strAuthValue, String strEmailAddress,
 			String strTaxOfficeNumber, String strTaxOfficeReference, String strOrganization,
 			String strChannelURI, String strChannelProduct, String strChannelVersion,
-			Date timeStamp, Date periodEnd, FullPaymentSubmissionISOcurrencyType defaultCurrency, IRmark irMark) throws Exception {
+			Date timeStamp, Date periodEnd, FullPaymentSubmissionISOcurrencyType defaultCurrency, IRmark irMark, String strSender,
+			FullPaymentSubmission fullPaymentSubmission) throws Exception {
 	
 		if(null == strEnvelopeVersion || "".equalsIgnoreCase(strEnvelopeVersion)) {
 			throw new Exception("strEnvelopeVersion is null or empty string...");
@@ -146,11 +150,7 @@ public class FPSExcelToGovTalkMsgConverterImpl implements
 		channelRouting.setChannel(channel);
 		
 		//Get Current Date
-		GregorianCalendar timeStampGregorianCalendar = new GregorianCalendar();
-		logger.debug("TODO: refactor dateToday to be called outside");
-		timeStampGregorianCalendar.setTime(timeStamp);
-		//Set the Current Date to the XMLGregorianCalendar
-		XMLGregorianCalendar timeStampXMLCalendar = DatatypeFactory.newInstance().newXMLGregorianCalendar(timeStampGregorianCalendar);
+		XMLGregorianCalendar timeStampXMLCalendar = xmlGregorianCalendarUtil.convertDateToXMLGregorianCalendar(timeStamp);
 		channelRouting.setTimestamp(timeStampXMLCalendar);
 
 		govTalkDetails.getChannelRouting().add(channelRouting);
@@ -174,14 +174,15 @@ public class FPSExcelToGovTalkMsgConverterImpl implements
 		taxOfficeReferenceKey.setValue(strTaxOfficeReference);
 		irHeaderKeys.getKey().add(taxOfficeReferenceKey);
 		irHeader.setKeys(irHeaderKeys);
-		GregorianCalendar periodEndGregorianCalendar = new GregorianCalendar();
-		periodEndGregorianCalendar.setTime(periodEnd);
-		XMLGregorianCalendar periodEndXMLCalendar = DatatypeFactory.newInstance().newXMLGregorianCalendar(periodEndGregorianCalendar);
+		XMLGregorianCalendar periodEndXMLCalendar = xmlGregorianCalendarUtil.convertDateToXMLGregorianCalendar(periodEnd);
 		irHeader.setPeriodEnd(periodEndXMLCalendar);
 		irHeader.setDefaultCurrency(defaultCurrency);
 		irHeader.setIRmark(irMark);
+		irHeader.setSender(strSender);
 		irEnvelope.setIRheader(irHeader);
 		body.getAny().add(irEnvelope);
+		
+		irEnvelope.setFullPaymentSubmission(fullPaymentSubmission);
 		govTalkMessage.setBody(body);
 		
 		return govTalkMessage;

@@ -4,7 +4,7 @@
 package com.customer.rti.fps.util;
 
 /**
- * @author junie.bonifacio
+ * @author developer
  *
  */
 public interface FPS {

@@ -1,4 +1,4 @@
-package com.customer.rti.fps.util;
+package com.customer.jaxb.util;
 
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -16,10 +16,6 @@ import org.springframework.stereotype.Component;
 import com.customer.rti.rim2016.v1_2.envelope.generated.GovTalkMessage;
 import com.customer.rti.rim2016.v1_2.fps.generated.IRenvelope;
 
-/**
- * @author junie.bonifacio
- *
- */
 @Component
 public class FPSJAXBUtilImpl implements FPSJAXBUtil {
 

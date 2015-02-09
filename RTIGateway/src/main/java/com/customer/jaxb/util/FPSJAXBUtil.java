@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.customer.rti.fps.util;
+package com.customer.jaxb.util;
 
 import javax.xml.bind.JAXBException;
 
